@@ -24,6 +24,9 @@
 					<button type="submit" class="btn btn-success">Submit</button>
 				</div>
 			</form>
+			<div class="alert alert-danger" role="alert" *ngIf="errorMessage!=''">
+				<strong>Oh snap!</strong> {{errorMessage}}
+			</div>
 		</div>
 	</div>
 	<div class="container hidden-md-down" style="background: #21b2fe">

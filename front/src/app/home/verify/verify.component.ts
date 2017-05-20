@@ -36,9 +36,14 @@ export class VerifyComponent implements OnInit {
 
   resend(){
   	this.errorMsg="";
-  	this.api.getAll('/main/resend')
+  	this.api.getAll('/user/resend')
   	.subscribe(data=>{
-  		this.showEmail=data[1];
+		if(data[0]=='Success'){
+			this.showEmail=data[1];
+		}
+		else{
+			this.errorMsg=data[1];
+		}
   	});
   }
 

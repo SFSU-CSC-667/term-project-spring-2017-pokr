@@ -135,6 +135,19 @@ div.chat-messages > div.message-wrapper.center{
     padding: 0px 3px;
     border-radius: 8px;
 }
+.userchip{
+    position: absolute;
+    top: 65px;
+    left: 0px;
+    min-width: 80px;
+    text-align: center;
+    background: #454545;
+    color: #bababa;
+    padding: 0px 3px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
 .actionbox{
     position: absolute;
     left:20px;
@@ -175,4 +188,12 @@ div.chat-messages > div.message-wrapper.center{
     position: absolute;
     width: 45px;
     bottom: 0px;
+}
+.chipdiv{
+    position: absolute;
+    right: 0px;
+    padding: 20px;
+}
+.chipdiv>img{
+    width: 30px;
 }

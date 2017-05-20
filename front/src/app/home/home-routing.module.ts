@@ -20,7 +20,7 @@ const routes: Routes = [
 			{ path:'invite',component:InviteComponent },
 			{ path:'login',component:LoginComponent },
 			{ path:'register',component:RegisterComponent },
-			{ path:'reset',component:ResetComponent },
+			{ path:'reset/:token',component:ResetComponent },
 			{ path:'verify',component:VerifyComponent },
 			{ path:'**', redirectTo:'', pathMatch:'full' }
 		]

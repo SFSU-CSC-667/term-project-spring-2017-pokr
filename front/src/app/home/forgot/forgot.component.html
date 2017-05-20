@@ -7,11 +7,11 @@
 			</a>
 		</nav>
 		<div class="container" style="padding-top: 20px;">
-			<div class="row align-center"><span style="font-weight: 300;font-size: 2.5rem;">Forgot password</span></div>
+			<div class="row align-center"><span style="font-weight: 300;font-size: 2.5rem;">Reset password</span></div>
 			<form (ngSubmit)="forgot()">
 				<div class="form-group">
 					<label for="companyName">Email</label>
-					<input type="email" class="form-control" id="companyName" placeholder="Enter your email..." [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+					<input type="email" class="form-control" id="companyName" placeholder="Enter your company email..." [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
 				</div>
 				<div class="form-group text-xs-center" style="padding-top: 10px;">
 					<button type="submit" class="btn btn-success">Submit</button>
@@ -20,8 +20,11 @@
 					<span>Remember your password? <a routerLink="/login">Login</a></span>
 				</div>
 			</form>
-			<div class="alert alert-success" role="alert" style="text-align: center;margin-top: 15px;" *ngIf="showMessage">
-			  Reset link sent to {{email}}
+			<div class="alert alert-danger" role="alert" *ngIf="errorMessage!=''">
+				<strong>Oh snap!</strong> {{errorMessage}}
+			</div>
+			<div class="alert alert-success" role="alert" *ngIf="showMessage!=''">
+				<strong>Email sent to :</strong> {{showMessage}}
 			</div>
 		</div>
 	</div>

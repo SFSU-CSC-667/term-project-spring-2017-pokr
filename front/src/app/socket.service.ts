@@ -8,8 +8,10 @@ import * as io from 'socket.io-client';
 export class SocketService {
   private socket: CustomSocketType;
   private url: string;
+  private observables: any;
   constructor() {
     this.url = "http://localhost:3000";
+    this.observables = {}
   }
 
   connect(tableId: string) {
@@ -21,12 +23,18 @@ export class SocketService {
   }
 
   receive(method: string) {
-    let observable = new Observable(observer => {
-      this.socket.on(method, (data) => {
-        observer.next(data);
+    const observable = this.observables[method];
+    
+    if(!observable) {
+      const observable = new Observable(observer => {
+        this.socket.on(method, (data) => {
+          observer.next(data);
+        });
       });
-    });
-    return observable;
+      this.observables[method] = observable;
+    }
+
+    return this.observables[method];
   }
 
   

@@ -1,4 +1,12 @@
-<div class="container-fluid" style="display:flex;justify-content: center;align-content: center;">
+<div class="container-fluid" style="display:flex;justify-content: center;align-content: center; position: relative;">
+  <div class="chipdiv" *ngIf="userData">
+      <img src="../../../assets/chip_main.png" alt="">
+      {{userData['TableUser.User.UserChip.value']}}
+    </div>
+    <div class="chipdiv" *ngIf="!userData && currentData">
+      <img src="../../../assets/chip_main.png" alt="">
+      {{currentData['User.UserChip.value']}}
+    </div>
   <div style="position:relative;">
     <div class="controls">
 
@@ -7,26 +15,41 @@
       
     </div>
     <div class="table" *ngIf="tableData">
-        <div class="cardPlace" *ngIf="tableData.gameCards">
-          <div class="card">
-            <span class="cardValue">A</span>
-            <img class="cardSuit" src="../../../assets/Spades.png" alt="Spade">
+        <div class="cardPlace" *ngIf="tableData.gamecards">
+          <div class="card" *ngIf="tableData.gamecards.length>=1">
+            <span class="cardValue">{{tableData.gamecards[0]['Card.spriteX']}}</span>
+            <img *ngIf="tableData.gamecards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+            <img *ngIf="tableData.gamecards[0]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+            <img *ngIf="tableData.gamecards[0]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+            <img *ngIf="tableData.gamecards[0]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
           </div>
-          <div class="card">
-            <span class="cardValue">A</span>
-            <img class="cardSuit" src="../../../assets/Clubs.png" alt="Spade">
+          <div class="card" *ngIf="tableData.gamecards.length>=2">
+            <span class="cardValue">{{tableData.gamecards[1]['Card.spriteX']}}</span>
+            <img *ngIf="tableData.gamecards[1]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+            <img *ngIf="tableData.gamecards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+            <img *ngIf="tableData.gamecards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+            <img *ngIf="tableData.gamecards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
           </div>
-          <div class="card">
-            <span class="cardValue">A</span>
-            <img class="cardSuit" src="../../../assets/Diamonds.png" alt="Spade">
+          <div class="card" *ngIf="tableData.gamecards.length>=3">
+            <span class="cardValue">{{tableData.gamecards[2]['Card.spriteX']}}</span>
+            <img *ngIf="tableData.gamecards[2]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+            <img *ngIf="tableData.gamecards[2]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+            <img *ngIf="tableData.gamecards[2]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+            <img *ngIf="tableData.gamecards[2]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
           </div>
-          <div class="card">
-            <span class="cardValue">A</span>
-            <img class="cardSuit" src="../../../assets/Hearts.png" alt="Spade">
+          <div class="card" *ngIf="tableData.gamecards.length>=4">
+            <span class="cardValue">{{tableData.gamecards[3]['Card.spriteX']}}</span>
+            <img *ngIf="tableData.gamecards[3]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+            <img *ngIf="tableData.gamecards[3]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+            <img *ngIf="tableData.gamecards[3]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+            <img *ngIf="tableData.gamecards[3]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
           </div>
-          <div class="card">
-            <span class="cardValue">A</span>
-            <img class="cardSuit" src="../../../assets/Spades.png" alt="Spade">
+          <div class="card" *ngIf="tableData.gamecards.length>=5">
+            <span class="cardValue">{{tableData.gamecards[4]['Card.spriteX']}}</span>
+            <img *ngIf="tableData.gamecards[4]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+            <img *ngIf="tableData.gamecards[4]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+            <img *ngIf="tableData.gamecards[4]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+            <img *ngIf="tableData.gamecards[4]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
           </div>
         </div>
         <div class="player" style="top: -67px;left: 255px;">
@@ -37,9 +60,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[0]" class="avatar">
-            <img src="{{tableData.tableusers[0]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[0]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 0px;left: 85px;width: 110px;" *ngIf="userData && tableData.tableusers[0]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[0]['currentChips']}}</div>
+            <div class="userchip" style="top:85px;left:-100px;" *ngIf="getuserstatus(tableData.tableusers[0])!='None'">{{getuserstatus(tableData.tableusers[0])}}</div>
+            <div class="userchip" style="left:-100px" *ngIf="getuserbet(tableData.tableusers[0])!='None'">{{getuserbet(tableData.tableusers[0])}}</div>
+            <div class="cardPlace"  style="top: 0px;left: 85px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[0]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -53,6 +79,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace"  style="top: 0px;left: 85px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[0]['id']] && winningData[tableData.tableusers[0]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[0]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[0]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[0]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -62,9 +104,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[1]" class="avatar">
-            <img src="{{tableData.tableusers[1]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[1]['User.name']}}</div>
-            <div class="cardPlace" style="top: 0px;left: 85px;width: 110px;" *ngIf="userData && tableData.tableusers[1]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[1]['currentChips']}}</div>
+            <div class="userchip" style="top:50px;left:-100px;" *ngIf="getuserstatus(tableData.tableusers[1])!='None'">{{getuserstatus(tableData.tableusers[1])}}</div>
+            <div class="userchip" style="top:30px;left:-100px" *ngIf="getuserbet(tableData.tableusers[1])!='None'">{{getuserbet(tableData.tableusers[1])}}</div>
+            <div class="cardPlace" style="top: 0px;left: 85px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[1]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -78,6 +123,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace" style="top: 0px;left: 85px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[1]['id']] && winningData[tableData.tableusers[1]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[1]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[1]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[1]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -87,9 +148,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[2]" class="avatar">
-            <img src="{{tableData.tableusers[2]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[2]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 0px;left: 85px;width: 110px;" *ngIf="userData && tableData.tableusers[2]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[2]['currentChips']}}</div>
+            <div class="userchip" style="top:0px;left:-75px;" *ngIf="getuserstatus(tableData.tableusers[2])!='None'">{{getuserstatus(tableData.tableusers[2])}}</div>
+            <div class="userchip" style="top:-20px;left:-75px" *ngIf="getuserbet(tableData.tableusers[2])!='None'">{{getuserbet(tableData.tableusers[2])}}</div>
+            <div class="cardPlace"  style="top: 0px;left: 85px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[2]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -103,6 +167,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace" style="top: 0px;left: 85px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[2]['id']] && winningData[tableData.tableusers[2]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[2]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[2]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[2]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -112,9 +192,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[3]" class="avatar">
-            <img src="{{tableData.tableusers[3]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
+            <div class="userchip" style="top:-55px;left:-20px;" *ngIf="getuserstatus(tableData.tableusers[3])!='None'">{{getuserstatus(tableData.tableusers[3])}}</div>
+            <div class="userchip" style="top:-75px;left:-20px" *ngIf="getuserbet(tableData.tableusers[3])!='None'">{{getuserbet(tableData.tableusers[3])}}</div>
             <div class="username">{{tableData.tableusers[3]['User.name']}}</div>
-            <div class="cardPlace" style="top: 112px;left: 0px;width: 110px;" *ngIf="userData && tableData.tableusers[3]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[3]['currentChips']}}</div>
+            <div class="cardPlace" style="top: 112px;left: 0px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[3]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -130,16 +213,35 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
+            <div class="cardPlace" style="top: 112px;left: 0px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[3]['id']] && winningData[tableData.tableusers[3]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[3]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[3]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[3]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
           </div>
         </div>
         <div class="player" style="top: 336px;left: 259px;">
-          <div *ngIf="!tableData.tableusers[3]" class="avatar" (click)="showsit(5)">
+          <div *ngIf="!tableData.tableusers[4]" class="avatar" (click)="showsit(5)">
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[4]" class="avatar">
-            <img src="{{tableData.tableusers[4]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[4]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 112px;left: 0px;width: 110px;" *ngIf="userData && tableData.tableusers[4]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[4]['currentChips']}}</div>
+            <div class="userchip" style="top:-55px;left:0px;" *ngIf="getuserstatus(tableData.tableusers[4])!='None'">{{getuserstatus(tableData.tableusers[4])}}</div>
+            <div class="userchip" style="top:-75px;left:0px" *ngIf="getuserbet(tableData.tableusers[4])!='None'">{{getuserbet(tableData.tableusers[4])}}</div>
+            <div class="cardPlace"  style="top: 112px;left: 0px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[4]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -153,6 +255,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace" style="top: 112px;left: 0px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[4]['id']] && winningData[tableData.tableusers[4]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[4]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[4]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[4]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -162,9 +280,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[5]" class="avatar">
-            <img src="{{tableData.tableusers[5]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[5]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 112px;left: 0px;width: 110px;" *ngIf="userData && tableData.tableusers[5]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[5]['currentChips']}}</div>
+            <div class="userchip" style="top:-55px;left:20px;" *ngIf="getuserstatus(tableData.tableusers[5])!='None'">{{getuserstatus(tableData.tableusers[5])}}</div>
+            <div class="userchip" style="top:-75px;left:20px" *ngIf="getuserbet(tableData.tableusers[5])!='None'">{{getuserbet(tableData.tableusers[5])}}</div>
+            <div class="cardPlace"  style="top: 112px;left: 0px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[5]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -178,6 +299,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace" style="top: 112px;left: 0px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[5]['id']] && winningData[tableData.tableusers[5]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[5]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[5]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[5]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -187,9 +324,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[6]" class="avatar">
-            <img src="{{tableData.tableusers[6]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[6]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 112px;left: 0px;width: 110px;" *ngIf="userData && tableData.tableusers[6]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[6]['currentChips']}}</div>
+            <div class="userchip" style="top:0px;left:70px;" *ngIf="getuserstatus(tableData.tableusers[6])!='None'">{{getuserstatus(tableData.tableusers[6])}}</div>
+            <div class="userchip" style="top:-20px;left:70px" *ngIf="getuserbet(tableData.tableusers[6])!='None'">{{getuserbet(tableData.tableusers[6])}}</div>
+            <div class="cardPlace"  style="top: 112px;left: 0px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[6]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -203,6 +343,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace" style="top: 112px;left: 0px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[6]['id']] && winningData[tableData.tableusers[6]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[6]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[6]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[6]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -212,9 +368,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[7]" class="avatar">
-            <img src="{{tableData.tableusers[7]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[7]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 0px;left: -112px;width: 110px;" *ngIf="userData && tableData.tableusers[7]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[7]['currentChips']}}</div>
+            <div class="userchip" style="top:50px;left:100px;" *ngIf="getuserstatus(tableData.tableusers[7])!='None'">{{getuserstatus(tableData.tableusers[7])}}</div>
+            <div class="userchip" style="top:30px;left:100px" *ngIf="getuserbet(tableData.tableusers[7])!='None'">{{getuserbet(tableData.tableusers[7])}}</div>
+            <div class="cardPlace"  style="top: 0px;left: -112px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[7]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -230,6 +389,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
+            <div class="cardPlace" style="top: 0px;left: -112px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[7]['id']] && winningData[tableData.tableusers[7]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[7]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[7]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[7]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
           </div>
         </div>
         <div class="player" style="top: -10px;left: -20px;">
@@ -237,9 +412,12 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
           <div *ngIf="tableData.tableusers[8]" class="avatar">
-            <img src="{{tableData.tableusers[8]['User.avatar']}}" class="d-inline-block align-top useravatar" alt="Avatar">
+            <img src="../../../assets/default_avatar.jpg" class="d-inline-block align-top useravatar" alt="Avatar">
             <div class="username">{{tableData.tableusers[8]['User.name']}}</div>
-            <div class="cardPlace"  style="top: 0px;left: -112px;width: 110px;" *ngIf="userData && tableData.tableusers[8]['id']==userData['TableUser.id']">
+            <div class="userchip">{{tableData.tableusers[8]['currentChips']}}</div>
+            <div class="userchip" style="top:85px;left:100px;" *ngIf="getuserstatus(tableData.tableusers[8])!='None'">{{getuserstatus(tableData.tableusers[8])}}</div>
+            <div class="userchip" style="left:100px" *ngIf="getuserbet(tableData.tableusers[8])!='None'">{{getuserbet(tableData.tableusers[8])}}</div>
+            <div class="cardPlace"  style="top: 0px;left: -112px;width: 110px;" *ngIf="!winningData && userData && tableData.tableusers[8]['id']==userData['TableUser.id']">
               <div class="card">
                 <span class="cardValue">{{userData.cards[0]['Card.spriteX']}}</span>
                 <img *ngIf="userData.cards[0]['Card.spriteY']=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
@@ -253,6 +431,22 @@
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
                 <img *ngIf="userData.cards[1]['Card.spriteY']=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+            </div>
+            <div class="cardPlace" style="top: 0px;left: -112px;width: 110px;" *ngIf="winningData && winningData[tableData.tableusers[8]['id']] && winningData[tableData.tableusers[8]['id']]['status']!=0">
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[8]['id']]['PlayerCards'][0]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][1]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][1]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][1]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][1]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
+              </div>
+              <div class="card">
+                <span class="cardValue">{{winningData[tableData.tableusers[8]['id']]['PlayerCards'][3]}}</span>
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][4]=='S'" class="cardSuit" src="../../../assets/Spades.png" alt="Spades">
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][4]=='D'" class="cardSuit" src="../../../assets/Diamonds.png" alt="Diamonds">
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][4]=='H'" class="cardSuit" src="../../../assets/Hearts.png" alt="Hearts">
+                <img *ngIf="winningData[tableData.tableusers[8]['id']]['PlayerCards'][4]=='C'" class="cardSuit" src="../../../assets/Clubs.png" alt="Clubs">
               </div>
             </div>
           </div>
@@ -291,15 +485,15 @@
 <div class="actionbox">
   <div class="container-fluid">
     <div class="row buttonrow">
-      <button class="btn buttons btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i> Leave</button>
+      <button class="btn buttons btn-secondary" (click)="leave()"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i> Leave</button>
     </div>
   </div>
   <div class="container-fluid" *ngIf="userData">
     <div class="row buttonrow">
-      <button class="btn buttons btn-primary"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i> Stand</button>
+      <button class="btn buttons btn-primary" (click)="stand()"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i> Stand</button>
     </div>
   </div>
-  <div class="container-fluid" *ngIf="userData && userData.isCurrent">
+  <div class="container-fluid" *ngIf="!winningData && userData && userData.isCurrent">
     <div class="row buttonrow" *ngIf="userData.minBet==0">
       <button class="btn buttons btn-success" (click)="check()"><i class="fa fa-check" aria-hidden="true"></i> Check</button>
     </div>
@@ -307,13 +501,13 @@
       <button class="btn buttons btn-success" (click)="call()"><i class="fa fa-exchange" aria-hidden="true"></i> Call</button>
     </div>
     <div class="row buttonrow">
-      <button class="btn buttons btn-info"><i class="fa fa-arrow-up" aria-hidden="true"></i> Raise</button>
+      <button class="btn buttons btn-info" (click)="showRaise()"><i class="fa fa-arrow-up" aria-hidden="true"></i> Raise</button>
     </div>
     <div class="row buttonrow">
-      <button class="btn buttons btn-warning"><i class="fa fa-upload" aria-hidden="true"></i> All In</button>
+      <button class="btn buttons btn-warning" (click)="allin()"><i class="fa fa-upload" aria-hidden="true"></i> All In</button>
     </div>
     <div class="row buttonrow">
-      <button class="btn buttons btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Fold</button>
+      <button class="btn buttons btn-danger" (click)="fold()"><i class="fa fa-times" aria-hidden="true"></i> Fold</button>
     </div>
   </div>
 </div>
@@ -328,10 +522,47 @@
       </div>
       <div class="modal-body">
         <div class="row" style="text-align:center" *ngIf="tableData">
-          {{tableData.minBuyin}}<input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="gameSettings.BuyIn"  type="text"><{{tableData.maxBuyin}}
+          <div class="container-fluid" style="text-align:center">
+            Minimum: {{tableData.minBuyin}}
+          </div>
+          <div class="container-fluid" style="text-align:center">
+            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="gameSettings.BuyIn"  type="text">
+          </div>
+          <div class="container-fluid" style="text-align:center">
+            Maximum: {{tableData.maxBuyin}}
+          </div>
         </div>
-        <div class="row" style="text-align:center">
+        <div class="container-fluid" style="text-align:center">
           <button class="btn btn-success" (click)="sit()">Buyin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #modal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content alert alert-danger">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="modal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title alert-heading">Raise</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row" style="text-align:center" *ngIf="userData">
+          <div class="container-fluid" style="text-align:center">
+            Minimum: {{userData.minBet}}
+          </div>
+          <div class="container-fluid" style="text-align:center">
+            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="myRaise"  type="text">
+          </div>
+          <div class="container-fluid" style="text-align:center">
+            Maximum: {{userData['TableUser.currentChips']}}
+          </div>
+        </div>
+        <div class="container-fluid" style="text-align:center">
+          <button class="btn btn-success" (click)="raise()">Raise</button>
         </div>
       </div>
     </div>

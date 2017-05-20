@@ -4,8 +4,8 @@ module.exports = {
   up: function (queryInterface, Sequelize) {
     queryInterface.bulkInsert("Tables",[{
       name:"Newb-1",
-      bigBlind:5,
-      smallBlind:10,
+      bigBlind:10,
+      smallBlind:5,
       status:1,
       minBuyin:2000,
       maxBuyin:20000,
@@ -13,8 +13,8 @@ module.exports = {
       updatedAt:new Date()
     },{
       name:"Intermediate-1",
-      bigBlind:50,
-      smallBlind:100,
+      bigBlind:100,
+      smallBlind:50,
       status:1,
       minBuyin:20000,
       maxBuyin:200000,
@@ -22,8 +22,8 @@ module.exports = {
       updatedAt:new Date()
     },{
       name:"Amateur-1",
-      bigBlind:10,
-      smallBlind:20,
+      bigBlind:20,
+      smallBlind:10,
       status:1,
       minBuyin:4000,
       maxBuyin:40000,
